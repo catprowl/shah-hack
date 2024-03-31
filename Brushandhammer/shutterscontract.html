@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        /* Contract modal styles */
+        .contract-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Overlay styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        /* Add your other CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="logo.png" alt="Your Logo" width="150" height="150">
+    
+    <!-- Button to open contract modal -->
+    <button onclick="openContractModal()">View Contract</button>
+
+    <!-- Contract modal -->
+    <div id="contractModal" class="contract-modal">
+        <!-- Contract content -->
+        <h1>Contract Details</h1>
+        <p>Service Type: <span id="serviceType"></span></p>
+        <p>Options: <span id="options"></span></p>
+        <p>Date of Service: <span id="contractDate"></span></p>
+        <p>Address: <span id="address"></span></p>
+        <!-- Add more contract details as needed -->
+
+        <!-- Signature -->
+        <h2>Signature</h2>
+        <!-- Include your signature input field here -->
+
+        <button onclick="submitContract()">Submit Contract</button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <script>
+        // Function to open contract modal
+        function openContractModal() {
+            document.getElementById('contractModal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Function to close contract modal
+        function closeContractModal() {
+            document.getElementById('contractModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Function to submit contract
+        function submitContract() {
+            // Handle contract submission (e.g., save signature, submit form)
+            alert('Contract submitted successfully!');
+            // Close the contract modal
+            closeContractModal();
+        }
+
+        // Retrieve stored information from sessionStorage
+        var serviceType = sessionStorage.getItem('serviceType');
+        var options = sessionStorage.getItem('options');
+        var contractDate = sessionStorage.getItem('contractDate');
+        var address = sessionStorage.getItem('address');
+        // Retrieve additional information as needed
+
+        // Display contract details
+        document.getElementById('serviceType').innerText = serviceType;
+        document.getElementById('options').innerText = options;
+        document.getElementById('contractDate').innerText = contractDate;
+        document.getElementById('address').innerText = address;
+    </script>
+</body>
+</html>

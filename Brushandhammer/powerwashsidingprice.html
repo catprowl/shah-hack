@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 15px 30px;
+        margin: 0 10px;
+        background-color: #FF3434;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #B20A0A;
+    }
+
+    img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+  <h1>Price</h1>
+  <p id="price">Price: $0</p>
+  <button onclick="proceedToTerms()">Proceed to Terms and Conditions</button>
+
+  <script>
+    // Function to extract price from URL parameters
+    function getPrice() {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('price');
+    }
+
+    // Function to display the price
+    window.onload = function() {
+      var price = calculatePrice();
+      document.getElementById('price').innerText = 'Price: $' + price;
+    };
+
+    // Function to calculate the price based on square footage
+    function calculatePrice() {
+      var squareFootage = parseInt(getPrice());
+      
+      // Calculate the base price based on square footage
+      var basePrice = squareFootage * 0.15;
+
+      // Apply a logarithmic transformation to the base price to balance the pricing
+      var transformedPrice = Math.log(squareFootage + 1) * 100;
+
+      // Ensure the transformed price falls within the desired range
+      var price = Math.max(250, Math.min(transformedPrice, 650));
+      
+      return price;
+    }
+
+    // Function to proceed to the terms and conditions screen
+    function proceedToTerms() {
+      window.location.href = 'terms-and-conditions.html';
+    }
+  </script>
+</body>
+</html>

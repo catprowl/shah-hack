@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive Way Options</title>
+  <style>
+    
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+    
+  <h1>Drive Way Options</h1>
+  <label for="car-count">How many cars can the driveway fit at most?</label>
+  <select id="car-count">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+  <button onclick="calculatePrice()">Calculate Price</button>
+
+  <script>
+    // Function to calculate the price for drive way based on car count
+    function calculatePrice() {
+      var carCount = document.getElementById('car-count').value;
+      var price;
+      if (carCount == 1) {
+        price = 140;
+      } else if (carCount == 2) {
+        price = 180;
+      } else if (carCount == 3) {
+        price = 200;
+      } else if (carCount == 4) {
+        price = 240;
+      } else if (carCount == 5) {
+        price = 260;
+      } else if (carCount == 6) {
+        price = 290;
+      }
+      // Redirect to the price screen
+      window.location.href = 'drivewayprice.html?price=' + price;
+    }
+  </script>
+</body>
+</html>

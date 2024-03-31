@@ -1,0 +1,90 @@
+<!-- house-clean-details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+    <!-- Number of Rooms Selection -->
+    <h3>Select Number of Rooms:</h3>
+    <div class="button-container">
+    <button onclick="selectRooms(1)">1</button>
+    <button onclick="selectRooms(2)">2</button>
+    <!-- Add more buttons for additional room selections -->
+    </div>
+
+    <!-- Number of Bathrooms Selection -->
+    <h3>Select Number of Bathrooms:</h3>
+    <div class="button-container">
+    <button onclick="selectBathrooms(1)">1</button>
+    <button onclick="selectBathrooms(2)">2</button>
+    <!-- Add more buttons for additional bathroom selections -->
+    </div>
+
+    <!-- Proceed to House Clean Confirmation -->
+    <button onclick="navigateTo('housecleanprice.html')">Next</button>
+
+    <script>
+        // Function to select number of rooms
+        function selectRooms(numRooms) {
+            // Save selected number of rooms to localStorage
+            localStorage.setItem('numRooms', numRooms);
+        }
+
+        // Function to select number of bathrooms
+        function selectBathrooms(numBathrooms) {
+            // Save selected number of bathrooms to localStorage
+            localStorage.setItem('numBathrooms', numBathrooms);
+        }
+
+        // Function to navigate to the next step
+        function navigateTo(page) {
+            // Navigate to the next page
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

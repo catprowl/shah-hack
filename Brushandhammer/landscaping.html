@@ -1,0 +1,79 @@
+<!-- lawn-mowing-sqft.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+            justify-content: center; /* Center the buttons horizontally */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+    <!-- Square Footage Selection -->
+    <h2>Lawn Mowing - Square Footage</h2>
+    <p>Please select the square footage of your lawn:</p>
+    <div class="button-container">
+        <button onclick="selectSquareFootage(1000)">1,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">2,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">3,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">4,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">5,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">6,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">7,000 sqft</button>
+        <button onclick="selectSquareFootage(1500)">8,000 sqft</button>
+    </div>
+
+    <script>
+        // Function to store selected square footage and proceed to next step
+        function selectSquareFootage(sqft) {
+            localStorage.setItem('lawnSqft', sqft);
+            window.location.href = 'landscapingcondition.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!-- lawn-mowing-price.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+            justify-content: center; /* Center the buttons horizontally */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+    <!-- Price Calculation -->
+    <h2>Lawn Mowing - Price</h2>
+    <p>Based on your selections, the total price for lawn mowing is:</p>
+    <p><strong>$<span id="totalPrice"></span></strong></p>
+
+    <script>
+        // Function to calculate total price
+        function calculateTotalPrice() {
+            // Retrieve selected options from localStorage
+            const sqft = parseInt(localStorage.getItem('lawnSqft'));
+            const condition = localStorage.getItem('lawnCondition');
+            const trim = localStorage.getItem('lawnTrim');
+
+            // Base price for lawn mowing
+            let basePrice = 30; // Default base price for 1,000 sqft
+
+            // Additional charges based on selections
+            basePrice += Math.ceil((sqft - 1000) / 500) * 5; // Add $5 for every 500 sqft increment
+            if (condition === '4-6') {
+                basePrice += 10; // Add $10 for condition 4-6 inches
+            } else if (condition === '6-9') {
+                basePrice += 20; // Add $20 for condition 6-9 inches
+            } else if (condition === '9-beyond') {
+                basePrice += 30; // Add $30 for condition 9 inches and beyond
+            }
+            if (trim === 'true') {
+                basePrice += 15; // Add $15 for trimming edges
+            }
+
+            // Display total price
+            document.getElementById('totalPrice').textContent = basePrice;
+        }
+
+        // Call the calculateTotalPrice function when the page loads
+        window.onload = calculateTotalPrice;
+    </script>
+</body>
+</html>

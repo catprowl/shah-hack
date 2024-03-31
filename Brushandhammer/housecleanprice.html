@@ -1,0 +1,95 @@
+<!-- house-clean-price.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+    <!-- Price Calculation -->
+    <h2>House Cleaning Price</h2>
+    <p>Based on your selections, the total price for the house cleaning job is:</p>
+    <p><strong>$<span id="totalPrice"></span></strong></p>
+
+    <!-- Discount and Proceed Button -->
+    <p>Proceed with the job to avail a $100 discount!</p>
+    <button onclick="navigateTo('checkout.html')">Proceed to Checkout</button>
+
+    <script>
+        // Function to calculate total price
+        function calculateTotalPrice() {
+            // Retrieve selected options from localStorage
+            const numRooms = parseInt(localStorage.getItem('numRooms'));
+            const numBathrooms = parseInt(localStorage.getItem('numBathrooms'));
+            const deepClean = localStorage.getItem('deepClean');
+
+            // Base price for house cleaning
+            let basePrice = 150; // Default base price for 1 bedroom and 1 bathroom
+
+            // Additional charges based on selections
+            if (deepClean === 'no') {
+                basePrice += 75; // Add $75 for no previous deep clean
+            }
+            basePrice += (numRooms - 1) * 25; // Add $25 for each additional room
+            basePrice += (numBathrooms - 1) * 25; // Add $25 for each additional bathroom
+
+            // Display total price
+            document.getElementById('totalPrice').textContent = basePrice;
+
+            // Apply discount if user proceeds with job
+            const discountedPrice = basePrice - 100;
+            localStorage.setItem('totalPrice', discountedPrice);
+        }
+
+        // Function to navigate to the next step
+        function navigateTo(page) {
+            // Navigate to the next page
+            window.location.href = page;
+        }
+
+        // Call the calculateTotalPrice function when the page loads
+        window.onload = calculateTotalPrice;
+    </script>
+</body>
+</html>

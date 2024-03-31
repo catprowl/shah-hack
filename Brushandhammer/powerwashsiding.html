@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siding Options</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 15px 30px;
+        margin: 0 10px;
+        background-color: #FF3434;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #B20A0A;
+    }
+
+    img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+  <h1>Siding Options</h1>
+  <label for="house-stories">How many stories is the house?</label>
+  <select id="house-stories">
+    <div class="button-container">
+    <option value="1">1 story</option>
+    <option value="2">2 stories</option>
+    <option value="3">3 stories</option>
+    </div>
+  </select>
+  <label for="length">What is the length of the house?</label>
+  <select id="length">
+    <div class="button-container">
+    <option value="40">40 feet</option>
+    <option value="60">60 feet</option>
+    <option value="80">80 feet</option>
+    <option value="100">100 feet</option>
+    </div>
+  </select>
+  <label for="width">What is the width of your home?</label>
+  <select id="width">
+    <div class="button-container">
+    <option value="30">30 feet</option>
+    <option value="40">40 feet</option>
+    <option value="50">50 feet</option>
+    <option value="60">60 feet</option>
+    </div>
+  </select>
+  <button onclick="calculatePrice()">Calculate Price</button>
+
+  <script>
+    // Function to calculate the price for siding
+    // Add necessary logic to calculate square footage and determine price
+    function calculatePrice() {
+      var stories = document.getElementById('house-stories').value;
+      var length = document.getElementById('length').value;
+      var width = document.getElementById('width').value;
+      var squareFootage = (parseInt(length) * parseInt(width)) * parseInt(stories);
+      var price = squareFootage * 0.25;
+      // Redirect to the price screen
+      window.location.href = 'powerwashsidingprice.html?price=' + price;
+    }
+  </script>
+</body>
+</html>

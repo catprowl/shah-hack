@@ -1,0 +1,63 @@
+<!-- paintingshutterterms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Terms agreement -->
+    <label for="terms">I agree to the terms and conditions:</label>
+    <input type="checkbox" id="terms">
+    <button onclick="processOrder()">Proceed to Checkout</button>
+
+    <script>
+        function processOrder() {
+            // Process order logic
+            alert('Order processed successfully!');
+            navigateTo('shutterscontract.html');
+        }
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

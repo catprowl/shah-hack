@@ -1,0 +1,82 @@
+<!-- house-clean.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+    <!-- House Cleaning Options -->
+    <h3>Select House Cleaning Type:</h3>
+    <label><input type="radio" name="cleaningType" value="standard"> Standard Clean</label><br>
+    <label><input type="radio" name="cleaningType" value="deep"> Deep Clean</label><br>
+
+    <!-- Question about previous deep cleaning -->
+    <h3>Has your house been deep cleaned in the past 6 months?</h3>
+    <label><input type="radio" name="deepClean" value="yes"> Yes</label><br>
+    <label><input type="radio" name="deepClean" value="no"> No</label><br>
+
+    <!-- Proceed to House Clean Details -->
+    <button onclick="navigateTo('housecleanrooms.html')">Next</button>
+
+    <script>
+        // Function to navigate to the next step
+        function navigateTo(page) {
+            // Get selected cleaning type
+            const cleaningType = document.querySelector('input[name="cleaningType"]:checked').value;
+
+            // Get answer to deep cleaning question
+            const deepClean = document.querySelector('input[name="deepClean"]:checked').value;
+
+            // Save selected cleaning type and deep clean answer to localStorage
+            localStorage.setItem('cleaningType', cleaningType);
+            localStorage.setItem('deepClean', deepClean);
+
+            // Navigate to the next page
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

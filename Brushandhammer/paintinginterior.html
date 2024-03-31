@@ -1,0 +1,114 @@
+<!-- paintinginterior.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+
+    <!-- Select number of rooms and bathrooms -->
+    <label for="rooms">Number of Rooms:</label>
+    <select id="rooms">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <!-- Add more options as needed -->
+    </select>
+    <label for="bathrooms">Number of Bathrooms:</label>
+    <select id="bathrooms">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <!-- Add more options as needed -->
+    </select>
+
+    <!-- Additional painting requirements -->
+    <h3>Additional Painting Requirements:</h3>
+    <input type="checkbox" id="ceilings" name="ceilings">
+    <label for="ceilings">Ceilings</label><br>
+    <input type="checkbox" id="walls" name="walls">
+    <label for="walls">Walls</label><br>
+    <input type="checkbox" id="trim" name="trim">
+    <label for="trim">Trim</label><br>
+    <input type="checkbox" id="windows" name="windows">
+    <label for="windows">Windows</label><br>
+    <input type="checkbox" id="doors" name="doors">
+    <label for="doors">Doors</label><br>
+
+    <!-- Calculate Price -->
+    <button onclick="calculatePrice()">Calculate Price</button>
+    <p id="priceDisplay">Price: $XXX</p>
+
+    <!-- Proceed with Job -->
+    <button onclick="navigateTo('interiorpaintdate.html')">Proceed with Job</button>
+
+    <script>
+        // Function to calculate the price based on selections
+        function calculatePrice() {
+            const rooms = document.getElementById('rooms').value;
+            const bathrooms = document.getElementById('bathrooms').value;
+            const ceilings = document.getElementById('ceilings').checked;
+            const walls = document.getElementById('walls').checked;
+            const trim = document.getElementById('trim').checked;
+            const windows = document.getElementById('windows').checked;
+            const doors = document.getElementById('doors').checked;
+
+            // Calculate price based on selections
+            let price = rooms * 500 + bathrooms * 400;
+            if (ceilings) price += 100;
+            if (walls) price += 100;
+            if (trim) price += 100;
+            if (windows) price += 100;
+            if (doors) price += 100;
+
+            // Update price display
+            document.getElementById('priceDisplay').textContent = 'Price: $' + price;
+        }
+
+        // Function to navigate to the next step
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

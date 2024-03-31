@@ -1,0 +1,15 @@
+// Package.JSON
+{
+    "name": "homeservices",
+    "version": "1.0.0",
+    "description": "HomeServices Website",
+    "main": "Server.js",
+    "scripts": {
+      "start": "node Server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^5.13.0"
+    }
+  } 
+  

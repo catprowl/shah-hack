@@ -1,0 +1,72 @@
+<!-- address-input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            background-color: #FF3434;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #B20A0A;
+        }
+
+        img.logo {
+            width: 175px;
+            height: 175px;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 30px; /* Adjust as needed */
+            left: 30px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="hammer1.png" alt="Logo">
+    <!-- Address Input -->
+    <h3>Enter Address:</h3>
+    <label for="address">Address:</label>
+    <input type="text" id="address"><br>
+
+    <!-- Proceed to Additional Requirements -->
+    <button onclick="navigateTo('additional-requirements.html')">Next</button>
+
+    <script>
+        // Function to navigate to the next step
+        function navigateTo(page) {
+            // Get user input address
+            const address = document.getElementById('address').value;
+
+            // Save address to localStorage
+            localStorage.setItem('address', address);
+
+            // Navigate to the next page
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
